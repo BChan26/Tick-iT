@@ -16,9 +16,8 @@ class Event(models.Model):
     venue = models.ForeignKey(Venue, on_delete=models.CASCADE, related_name="events")
 
     eventname = models.CharField(max_length=100)
-    date = models.CharField(max_length=100)
-    time = models.CharField(max_length=100)
-    price = models.CharField(max_length=100)
+    datetime = models.DateTimeField(null=True)
+    price = models.FloatField()
     details = models.TextField()
 
     def __str__(self):
