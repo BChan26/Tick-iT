@@ -37,8 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ticket_app'
+    'ticket_app',
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,14 +94,14 @@ WSGI_APPLICATION = 'ticket_project.wsgi.application'
 #     }
 # }
 
-## Bit.io hosted postgres db
+# Bit.io hosted postgres db
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'gaticketteam/tick-it',
-            'USER': 'gaticketteam',
-            'PASSWORD': 'v2_3wyiG_QAJyWCKf9DEj3RXJiWFV9yw',
-            'HOST': 'db.bit.io',
+        'NAME': 'gaticketteam/tick-it',
+        'USER': 'gaticketteam',
+        'PASSWORD': 'v2_3wyiG_QAJyWCKf9DEj3RXJiWFV9yw',
+        'HOST': 'db.bit.io',
     }
 }
 
