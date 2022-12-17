@@ -16,11 +16,11 @@ class Venue(models.Model):
 
 class Event(models.Model):
     venue = models.ForeignKey(
-        Venue, on_delete=models.CASCADE, related_name="events")
+        Venue, on_delete=models.CASCADE, related_name="event")
 
     eventname = models.CharField(max_length=100)
     datetime = models.DateTimeField(null=True)
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=6, decimal_places=2)
     details = models.TextField()
 
     def __str__(self):
