@@ -74,13 +74,25 @@ WSGI_APPLICATION = 'ticket_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# Local db settings
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': 'tickets',
+#             'USER': 'ticketuser',
+#             'PASSWORD': 'ticketpassword',
+#             'HOST': 'localhost',
+#     }
+# }
+
+## Bit.io hosted postgres db
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'tickets',
-            'USER': 'ticketuser',
-            'PASSWORD': 'ticketpassword',
-            'HOST': 'localhost',
+            'NAME': 'gaticketteam/tick-it',
+            'USER': 'gaticketteam',
+            'PASSWORD': 'v2_3wyiG_QAJyWCKf9DEj3RXJiWFV9yw',
+            'HOST': 'db.bit.io',
     }
 }
 
