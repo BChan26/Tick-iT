@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+
+
 class Venue(models.Model):
     venuename = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
@@ -13,7 +15,8 @@ class Venue(models.Model):
 
 
 class Event(models.Model):
-    venue = models.ForeignKey(Venue, on_delete=models.CASCADE, related_name="events")
+    venue = models.ForeignKey(
+        Venue, on_delete=models.CASCADE, related_name="events")
 
     eventname = models.CharField(max_length=100)
     datetime = models.DateTimeField(null=True)
