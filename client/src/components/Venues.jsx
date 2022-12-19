@@ -47,7 +47,9 @@ const Venues = () => {
             <h3>
               {venue.city}, {venue.state}
             </h3>
-            <h3> {venue.event} </h3>
+            {venue.event.map((event) => (
+              <div>{event.eventname}</div>
+            ))}
             <br />
           </div>
         ))}
