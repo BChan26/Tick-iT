@@ -2,10 +2,8 @@ import { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import axios from "axios"
-import { DataContext } from '../DataContext' 
-import { Dropdown } from 'flowbite-react'
-
-
+import { DataContext } from "../DataContext"
+import { Dropdown } from "flowbite-react"
 
 const Venues = () => {
   const { venues, setVenues } = useContext(DataContext)
@@ -53,8 +51,8 @@ const Venues = () => {
                 className="flex items-center justify-center rounded-md hover:border-2 hover:border-green-400 transition"
                 src={venue.img}
                 alt=""
-                width="200px"
-                height="200px"
+                width="300px"
+                height="300px"
               />
             </div>
             <h3 onClick={() => showVenue(venue)}> {venue.venuename} </h3>
@@ -62,16 +60,18 @@ const Venues = () => {
             <h3>
               {venue.city}, {venue.state}
             </h3>
-
-            
-                
-
-            <Dropdown label="Events" dismissOnClick={false}>
-              {venue.event.map((event) => (
-                      <Dropdown.Item key={event.id} onClick={() => showEvent(event)}>{event.eventname} </Dropdown.Item>
-              ))}
-            </Dropdown>
-            
+            <div className="flex justify-center">
+              <Dropdown label="Events" dismissOnClick={false}>
+                {venue.event.map((event) => (
+                  <Dropdown.Item
+                    key={event.id}
+                    onClick={() => showEvent(event)}
+                  >
+                    {event.eventname}{" "}
+                  </Dropdown.Item>
+                ))}
+              </Dropdown>
+            </div>
             <br />
           </div>
         ))}
