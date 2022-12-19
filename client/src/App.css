@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 /* Dropdown Button */
@@ -46,3 +48,9 @@
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
+
+/* .venueImage {
+  max-width: 50px;
+  max-height: 50px;
+  border: 1px;
+} */
