@@ -2,7 +2,10 @@ import { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import axios from "axios"
-import { DataContext } from "../DataContext"
+import { DataContext } from '../DataContext' 
+import { Dropdown } from 'flowbite-react'
+
+
 
 const Venues = () => {
   const { venues, setVenues } = useContext(DataContext)
@@ -11,27 +14,14 @@ const Venues = () => {
 
   let { i } = useParams()
 
-  function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show")
-  }
-
-  // Close the dropdown menu if the user clicks outside of it
-  window.onclick = function (event) {
-    if (!event.target.matches(".dropbtn")) {
-      var dropdowns = document.getElementsByClassName("dropdown-content")
-      var i
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i]
-        if (openDropdown.classList.contains("show")) {
-          openDropdown.classList.remove("show")
-        }
-      }
-    }
-  }
-
   const showVenue = (venue) => {
     console.log(venue)
     navigate(`${venue.venuename}`)
+  }
+
+  const showEvent = (event) => {
+    console.log(event)
+    navigate(`eventdetails/${event.id}`)
   }
 
   useEffect(() => {
@@ -73,17 +63,15 @@ const Venues = () => {
               {venue.city}, {venue.state}
             </h3>
 
-            <div class="dropdown">
-              <button onclick={myFunction} class="dropbtn">
-                Dropdown
-              </button>
-              <div id="myDropdown" class="dropdown-content">
-                {venue.event.map((event) => (
-                  <div key={event.eventname}>{event.eventname}</div>
-                ))}
-              </div>
-            </div>
+            
+                
 
+            <Dropdown label="Events" dismissOnClick={false}>
+              {venue.event.map((event) => (
+                      <Dropdown.Item key={event.id} onClick={() => showEvent(event)}>{event.eventname} </Dropdown.Item>
+              ))}
+            </Dropdown>
+            
             <br />
           </div>
         ))}
