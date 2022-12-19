@@ -8,7 +8,9 @@ export default function Header() {
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap"
         rel="stylesheet"
       />
-      <h1 className="Main">Tick-It</h1>
+      <h1 className="text-3xl font-bold underline bg-gradient-to-r from-indigo-500 to-slate-400 Main">
+        Tick-It
+      </h1>
     </div>
   )
 }
