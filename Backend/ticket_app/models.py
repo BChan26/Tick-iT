@@ -9,6 +9,7 @@ class Venue(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=100)
     vaccinationrequired = models.BooleanField(blank=False)
+    img = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.venuename
@@ -22,6 +23,7 @@ class Event(models.Model):
     datetime = models.DateTimeField(null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     details = models.TextField()
+    img = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.eventname
