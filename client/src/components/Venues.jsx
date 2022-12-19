@@ -2,31 +2,28 @@ import { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import axios from "axios"
-import { DataContext } from '../DataContext' 
-
-
+import { DataContext } from "../DataContext"
 
 const Venues = () => {
-  
-  const {venues, setVenues } = useContext(DataContext)
+  const { venues, setVenues } = useContext(DataContext)
 
   let navigate = useNavigate()
 
   let { i } = useParams()
 
   function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
+    document.getElementById("myDropdown").classList.toggle("show")
   }
 
   // Close the dropdown menu if the user clicks outside of it
-  window.onclick = function(event) {
-    if (!event.target.matches('.dropbtn')) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
-      var i;
+  window.onclick = function (event) {
+    if (!event.target.matches(".dropbtn")) {
+      var dropdowns = document.getElementsByClassName("dropdown-content")
+      var i
       for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+        var openDropdown = dropdowns[i]
+        if (openDropdown.classList.contains("show")) {
+          openDropdown.classList.remove("show")
         }
       }
     }
@@ -58,12 +55,18 @@ const Venues = () => {
     return <h2> Loading Please Wait</h2>
   } else {
     return (
-      <div className="grid">
+      <div className="flex-wrap: wrap;">
         {venues.map((venue, i) => (
-          <div
-            key={venue.venuename}
-            className="card"
-          >
+          <div key={venue.venuename} className="card">
+            <div classname="venueImage">
+              <img
+                className="flex items-center justify-center rounded-md hover:border-2 hover:border-green-400 transition"
+                src={venue.img}
+                alt=""
+                width="200px"
+                height="200px"
+              />
+            </div>
             <h3 onClick={() => showVenue(venue)}> {venue.venuename} </h3>
             <h3> {venue.address} </h3>
             <h3>
@@ -71,16 +74,16 @@ const Venues = () => {
             </h3>
 
             <div class="dropdown">
-              <button onclick={myFunction} class="dropbtn">Dropdown</button>
+              <button onclick={myFunction} class="dropbtn">
+                Dropdown
+              </button>
               <div id="myDropdown" class="dropdown-content">
                 {venue.event.map((event) => (
-                      <div key={event.eventname} >{event.eventname}</div>
+                  <div key={event.eventname}>{event.eventname}</div>
                 ))}
               </div>
-            </div>         
+            </div>
 
-
-            
             <br />
           </div>
         ))}
