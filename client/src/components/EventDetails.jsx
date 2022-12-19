@@ -1,3 +1,9 @@
 export default function EventDetails () {
-    return
+
+    
+    return (
+        <div>
+
+        </div>
+    )
 }

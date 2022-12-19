@@ -1,17 +1,40 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import axios from "axios"
+import { DataContext } from '../DataContext' 
+
+
 
 const Venues = () => {
-  const [venues, setVenues] = useState([])
+  
+  const {venues, setVenues } = useContext(DataContext)
+
   let navigate = useNavigate()
 
   let { i } = useParams()
 
-  const showVenue = (venue, i) => {
+  function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown menu if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+
+  const showVenue = (venue) => {
     console.log(venue)
-    navigate(`${venue.name}`)
+    navigate(`${venue.venuename}`)
   }
 
   useEffect(() => {
@@ -38,18 +61,26 @@ const Venues = () => {
       <div className="grid">
         {venues.map((venue, i) => (
           <div
-            key={venue.name}
+            key={venue.venuename}
             className="card"
-            onClick={() => showVenue(venue, i)}
           >
-            <h3> {venue.venuename} </h3>
+            <h3 onClick={() => showVenue(venue)}> {venue.venuename} </h3>
             <h3> {venue.address} </h3>
             <h3>
               {venue.city}, {venue.state}
             </h3>
-            {venue.event.map((event) => (
-              <div>{event.eventname}</div>
-            ))}
+
+            <div class="dropdown">
+              <button onclick={myFunction} class="dropbtn">Dropdown</button>
+              <div id="myDropdown" class="dropdown-content">
+                {venue.event.map((event) => (
+                      <div key={event.eventname} >{event.eventname}</div>
+                ))}
+              </div>
+            </div>         
+
+
+            
             <br />
           </div>
         ))}
