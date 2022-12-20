@@ -7,6 +7,7 @@ import { useState, useEffect } from "react"
 import { DataContext } from "./DataContext"
 import Header from "./components/Header"
 import Nav from "./components/Nav"
+import CreateVenue from './components/CreateVenue'
 
 function App() {
   const [venues, setVenues] = useState([])
@@ -51,6 +52,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/EventList" element={<EventList />} />
             <Route path="/EventDetails/:id" element={<EventDetails />} />
+            <Route path="/CreateVenue" element={<CreateVenue/>} />
           </Routes>
         </main>
       </div>
