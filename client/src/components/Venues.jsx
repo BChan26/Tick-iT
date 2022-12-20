@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import axios from "axios"
 import { DataContext } from "../DataContext"
 import { Dropdown } from "flowbite-react"
+import EditVenue from './EditVenue'
 
 const Venues = () => {
   const { venues, setVenues } = useContext(DataContext)
@@ -67,6 +68,11 @@ const Venues = () => {
                   {venue.city}, {venue.state}
                 </h3>
               </div>
+
+              <div>
+                <EditVenue venue={venue}/>
+              </div>
+
             </div>
             <div className="flex justify-center">
               <Dropdown label="Events" dismissOnClick={false}>
