@@ -21,6 +21,15 @@ function EventDetails() {
 
   return event ? (
     <div className="mt-6 eventDetails">
+      <div className="flex justify-center eventImageCard">
+        <div
+          style={{
+            backgroundImage: `url(${event.img})`,
+            backgroundSize: "cover",
+          }}
+          className="rounded-md w-2/5 h-3 eventImage"
+        ></div>
+      </div>
       <h1 className="flex justify-center font-bold">{event.eventname}</h1>
       <h2 className="flex justify-center">{event.datetime}</h2>
       <h2 className="flex justify-center">{event.price}</h2>
