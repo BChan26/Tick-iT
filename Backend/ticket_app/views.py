@@ -1,4 +1,4 @@
-from rest_framework import generics
+from rest_framework import generics, permissions
 from .serializers import VenueSerializer, EventSerializer
 from .models import Venue, Event
 
@@ -8,6 +8,9 @@ from .models import Venue, Event
 class VenueList(generics.ListCreateAPIView):
     queryset = Venue.objects.all()
     serializer_class = VenueSerializer
+    permission_classes = [
+        permissions.AllowAny,  # Unauthenticated users must be able to sign up
+    ]
 
 
 class VenueDetail(generics.RetrieveUpdateDestroyAPIView):
