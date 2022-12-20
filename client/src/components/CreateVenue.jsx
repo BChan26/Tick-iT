@@ -34,28 +34,28 @@ return (
 <form className="flex flex-col gap-4" onSubmit={handleLogin}>
         <div>
             <div className="mb-2 block">
-                <Label htmlFor="venuename" value="venuename"/>
+                <Label htmlFor="venuename" value="Venue Name"/>
             </div>
             <TextInput id="venuename" type="venuename" placeholder="venuename" name="venuename" value={formData.venuename} required={true} onChange={handleLoginForm}/>
         </div>
 
         <div>
             <div className="mb-2 block">
-                <Label htmlFor="address" value="address"/>
+                <Label htmlFor="address" value="Address"/>
             </div>
             <TextInput id="address" type="address" placeholder="address" name="address" value={formData.address} required={true} onChange={handleLoginForm}/>
         </div>
 
         <div>
             <div className="mb-2 block">
-                <Label htmlFor="city" value="city"/>
+                <Label htmlFor="city" value="City"/>
             </div>
             <TextInput id="city" type="city" placeholder="city" name="city" value={formData.city} required={true} onChange={handleLoginForm}/>
         </div>
 
         <div>
             <div className="mb-2 block">
-                <Label htmlFor="state" value="state"/>
+                <Label htmlFor="state" value="State"/>
             </div>
             <TextInput id="state" type="state" placeholder="state" name="state" value={formData.state} required={true} onChange={handleLoginForm}/>
         </div>
