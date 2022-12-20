@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import DeleteBtn from "./DeleteBtn.jsx"
+import moment from "moment"
 
 import axios from "axios"
 
@@ -31,7 +32,11 @@ function EventDetails() {
         ></div>
       </div>
       <h1 className="flex justify-center font-bold">{event.eventname}</h1>
-      <h2 className="flex justify-center">{event.datetime}</h2>
+
+      <h2 className="flex justify-center">
+        {moment(event.datetime).format("MMMM Do YYYY, h:mm a")}
+      </h2>
+
       <h2 className="flex justify-center">${event.price}</h2>
       <h2 className="flex justify-center">{event.details}</h2>
       <div className="flex justify-center">
