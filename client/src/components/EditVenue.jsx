@@ -13,7 +13,7 @@ const venueEdit = {
     city: venue.city,
     state: venue.state,
     vaccinationrequired: false, 
-    img: venue.venuename,
+    img: venue.img,
 }
 
 //useState, with editvenue as current state and setEditvenue as func to update state
