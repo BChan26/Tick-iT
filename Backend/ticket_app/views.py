@@ -23,3 +23,8 @@ class EventList(generics.ListAPIView):
 class EventDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+
+# class DeleteEvent(generics.RetrieveUpdateDestroyAPIView):
+#     def delete(self, request, id, format=None):
+#         event = self.get_object(id)
+#         event.delete()

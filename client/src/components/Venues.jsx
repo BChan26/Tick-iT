@@ -10,12 +10,10 @@ const Venues = () => {
 
   let navigate = useNavigate()
 
-  let { i } = useParams()
-
-  const showVenue = (venue) => {
-    console.log(venue)
-    navigate(`${venue.venuename}`)
-  }
+ // const showVenue = (venue) => {
+  //   console.log(venue)
+  //   navigate(`${venue.venuename}`)
+  // } 
 
   const showEvent = (event) => {
     console.log(event)
@@ -31,13 +29,6 @@ const Venues = () => {
 
     getVenue()
   }, [])
-
-  //   return (
-  //     <div>
-  //       <h1>Hello World! From the Venues page</h1>
-  //     </div>
-  //   )
-  // }
 
   if (!venues) {
     return <h2> Loading Please Wait</h2>
@@ -55,7 +46,8 @@ const Venues = () => {
                 height="300px"
               />
             </div>
-            <h3 onClick={() => showVenue(venue)}> {venue.venuename} </h3>
+            {/* <h3 onClick={() => showVenue(venue)}> {venue.venuename} </h3> */}
+            <h3> {venue.venuename} </h3>
             <h3> {venue.address} </h3>
             <h3>
               {venue.city}, {venue.state}
