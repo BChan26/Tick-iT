@@ -4,3 +4,13 @@
   justify-content: center;
 } */
 
+
+
+.venueImage {
+  flex-direction: column;
+  justify-content: center;
+  background-image: none;
+  min-height: 300px;
+  max-height: 300px;
+}
+

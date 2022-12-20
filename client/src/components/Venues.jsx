@@ -37,14 +37,22 @@ const Venues = () => {
       <div className="flex-wrap: wrap;">
         {venues.map((venue, i) => (
           <div key={venue.venuename} className="card">
-            <div className="flex justify-center venueImage">
-              <img
+            <div className="flex justify-center venueImageCard">
+              <div
+                style={{
+                  backgroundImage: `url(${venue.img})`,
+                  backgroundSize: "cover",
+                }}
+                className="rounded-md w-2/5 h-3 venueImage"
+              >
+                {/* <img
                 className="flex items-center justify-center rounded-md hover:border-2 hover:border-green-400 transition"
                 src={venue.img}
                 alt=""
-                width="300px"
-                height="300px"
-              />
+                // width="500px"
+                // height="=500px"
+              /> */}
+              </div>
             </div>
             {/* <h3 onClick={() => showVenue(venue)}> {venue.venuename} </h3> */}
             <div className="venueDetails">
