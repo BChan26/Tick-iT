@@ -5,10 +5,12 @@ import Home from "./components/Home"
 import "./App.css"
 import { useState, useEffect } from "react"
 import { DataContext } from "./DataContext"
+import Header from "./components/Header"
+import Nav from "./components/Nav"
 
 function App() {
   const [venues, setVenues] = useState([])
-  const [user, setUser] = useState('Username')
+  const [user, setUser] = useState("Username")
   const [authenticated, setAuth] = useState(false)
   const [tokens, setTokens] = useState({})
 
@@ -27,8 +29,23 @@ function App() {
   // },[])
 
   return (
-    <DataContext.Provider value={{ venues, setVenues, user, setUser, authenticated, setAuth, tokens, setTokens }}>
+    <DataContext.Provider
+      value={{
+        venues,
+        setVenues,
+        user,
+        setUser,
+        authenticated,
+        setAuth,
+        tokens,
+        setTokens,
+      }}
+    >
       <div className="App">
+        <header>
+          <Header></Header>
+          <Nav></Nav>
+        </header>
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
