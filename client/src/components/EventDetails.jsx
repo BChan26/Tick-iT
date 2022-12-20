@@ -1,13 +1,13 @@
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState  } from "react"
 import { useParams } from "react-router-dom"
 import DeleteBtn from './DeleteBtn.jsx'
-// import { DataContext } from "../DataContext"
+
 import axios from "axios"
 
 function EventDetails() {
   let { id } = useParams()
 console.log(useParams())
-  //   const { venues } = useContext(DataContext)
+
   const [event, setEvent] = useState(null)
 
   useEffect(() => {
@@ -17,7 +17,7 @@ console.log(useParams())
       setEvent(response.data)
     }
     getEvent()
-  }, [])
+  }, [id])
 
   return event ? (
     <div className="detail">

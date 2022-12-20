@@ -37,7 +37,7 @@ const Venues = () => {
       <div className="flex-wrap: wrap;">
         {venues.map((venue, i) => (
           <div key={venue.venuename} className="card">
-            <div classname="venueImage">
+            <div className="venueImage">
               <img
                 className="flex items-center justify-center rounded-md hover:border-2 hover:border-green-400 transition"
                 src={venue.img}
