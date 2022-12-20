@@ -69,7 +69,7 @@ const Venues = () => {
                 </h3>
               </div>
 
-              <div>
+              <div className="flex justify-center venueAddress">
                 <EditVenue venue={venue}/>
               </div>
 
