@@ -10,10 +10,10 @@ const Venues = () => {
 
   let navigate = useNavigate()
 
- // const showVenue = (venue) => {
+  // const showVenue = (venue) => {
   //   console.log(venue)
   //   navigate(`${venue.venuename}`)
-  // } 
+  // }
 
   const showEvent = (event) => {
     console.log(event)
@@ -37,7 +37,7 @@ const Venues = () => {
       <div className="flex-wrap: wrap;">
         {venues.map((venue, i) => (
           <div key={venue.venuename} className="card">
-            <div className="venueImage">
+            <div className="flex justify-center venueImage">
               <img
                 className="flex items-center justify-center rounded-md hover:border-2 hover:border-green-400 transition"
                 src={venue.img}
@@ -47,11 +47,19 @@ const Venues = () => {
               />
             </div>
             {/* <h3 onClick={() => showVenue(venue)}> {venue.venuename} </h3> */}
-            <h3> {venue.venuename} </h3>
-            <h3> {venue.address} </h3>
-            <h3>
-              {venue.city}, {venue.state}
-            </h3>
+            <div className="venueDetails">
+              <div className="flex justify-center venueName">
+                <h3> {venue.venuename} </h3>
+              </div>
+              <div className="flex justify-center venueAddress">
+                <h3> {venue.address} </h3>
+              </div>
+              <div className="flex justify-center venueAddress">
+                <h3>
+                  {venue.city}, {venue.state}
+                </h3>
+              </div>
+            </div>
             <div className="flex justify-center">
               <Dropdown label="Events" dismissOnClick={false}>
                 {venue.event.map((event) => (
