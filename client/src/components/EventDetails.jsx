@@ -1,11 +1,12 @@
 import { useEffect, useState, useContext } from "react"
 import { useParams } from "react-router-dom"
-import { DataContext } from "../DataContext"
+import DeleteBtn from './DeleteBtn.jsx'
+// import { DataContext } from "../DataContext"
 import axios from "axios"
 
 function EventDetails() {
   let { id } = useParams()
-
+console.log(useParams())
   //   const { venues } = useContext(DataContext)
   const [event, setEvent] = useState(null)
 
@@ -24,6 +25,7 @@ function EventDetails() {
       <h2>{event.datetime}</h2>
       <h2>{event.price}</h2>
       <h2>{event.details}</h2>
+      <DeleteBtn></DeleteBtn>
     </div>
   ) : (
     <h1> event not found</h1>
