@@ -24,7 +24,7 @@ export default function Header() {
     return (
       <div id='stickySib' className={hideHeader ? 'hidden' : ''}>
         <div className="flex justify-center items-center h-96 bg-gradient-to-r from-indigo-500 to-slate-400 w-full">
-          <div className="w-3/5 rounded h-56 sm:h-64 xl:h-80 2xl:h-96">
+          <div className="w-3/5 rounded h-56 sm:h-64 xl:h-80 2xl:h-80">
             {events ? 
               <Carousel slideInterval={6000}>
                 <div>
