@@ -30,7 +30,7 @@ const Venues = () => {
     }
 
     getVenue()
-  })
+  },[])
 
   if (!venues) {
     return <h2> Loading Please Wait</h2>
