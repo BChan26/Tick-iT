@@ -2,8 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import DeleteBtn from "./DeleteBtn.jsx"
 import moment from "moment"
-
-import axios from "axios"
+import Client from '../services/api'
 
 function EventDetails() {
   let { id } = useParams()
@@ -13,7 +12,7 @@ function EventDetails() {
 
   useEffect(() => {
     const getEvent = async () => {
-      const response = await axios.get(`http://localhost:8000/events/${id}`)
+      const response = await Client.get(`/events/${id}`)
 
       setEvent(response.data)
     }

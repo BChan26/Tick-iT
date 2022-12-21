@@ -21,6 +21,7 @@ class VenueDetail(generics.RetrieveUpdateDestroyAPIView):
 class EventList(generics.ListAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
+    
 
 
 class EventDetail(generics.RetrieveUpdateDestroyAPIView):
