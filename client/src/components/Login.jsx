@@ -48,12 +48,12 @@ export default function Login () {
   return (
     <div>
 
-      <Dropdown label={<FaUserCircle size='30px'/>} arrowIcon={true} inline={true}>
-        <Dropdown.Header>
+      <Dropdown className="w-[120px]" label={<FaUserCircle size='30px'/>} arrowIcon={true} inline={true}>
+        {user ? <Dropdown.Header>
           <span className="block text-sm">
             {user}
           </span>
-        </Dropdown.Header>
+        </Dropdown.Header> : null}
         <Dropdown.Item onClick={toggleLoginModal}>
           Sign In
         </Dropdown.Item>
