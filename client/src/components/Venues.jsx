@@ -1,13 +1,12 @@
-import { useState, useEffect, useContext } from "react"
+import { useEffect, useContext } from "react"
 import { useNavigate } from "react-router-dom"
-import { useParams } from "react-router-dom"
 import axios from "axios"
 import { DataContext } from "../DataContext"
 import { Dropdown } from "flowbite-react"
 import EditVenue from './EditVenue'
 
 const Venues = () => {
-  const { venues, setVenues } = useContext(DataContext)
+  const { venues, setVenues, stickyNav, setHideHeader } = useContext(DataContext)
 
   let navigate = useNavigate()
 
@@ -22,6 +21,8 @@ const Venues = () => {
   }
 
   useEffect(() => {
+    setHideHeader(false)
+
     const getVenue = async () => {
       const response = await axios.get("http://localhost:8000/venues/")
       console.log(response.data)
@@ -29,13 +30,13 @@ const Venues = () => {
     }
 
     getVenue()
-  }, [])
+  })
 
   if (!venues) {
     return <h2> Loading Please Wait</h2>
   } else {
     return (
-      <div className="flex-wrap: wrap;">
+      <div style={{'marginTop': '20px'}} className={"relative" + (stickyNav ? " pt-20" : "")}>
         {venues.map((venue, i) => (
           <div key={venue.venuename} className="card">
             <div className="flex justify-center venueImageCard">
