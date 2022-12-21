@@ -17,17 +17,24 @@ function App() {
 
   // will need custom token claim that returns username: https://django-rest-framework-simplejwt.readthedocs.io/en/latest/customizing_token_claims.html
   // const checkToken = async () =>{
-  //   const user = await CheckSession();
+  //   // const user = await CheckSession();
+  //   console.log(user)
   //   setUser(user)
   //   setAuth(true)
   // }
 
-  // useEffect(()=> {
-  //   const token = localStorage.getItem('token')
-  //   if (token) {
-  //     checkToken();
-  //   }
-  // },[])
+  useEffect(()=> {
+    const token = localStorage.getItem('token')
+    console.log(token)
+    console.log(user)
+    if (token) {
+      setUser(localStorage.getItem('user'))
+      setAuth(true)
+      // checkToken();
+    }
+  },[])
+//Brandon consolidated the code to omit the CheckSession from the backend to simplify and focus on checking the local token and user, line 30 is new
+
 
   return (
     <DataContext.Provider

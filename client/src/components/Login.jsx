@@ -25,6 +25,7 @@ export default function Login () {
       const res = await axios.post('http://localhost:8000/api/token/', formData) 
       console.log(res.data)
       localStorage.setItem('token', res.data.access)
+      localStorage.setItem('user', formData.username)
       setTokens(res.data)
       setAuth(true)
       setUser(formData.username) // Would be better to get a username from a custom token claim: https://django-rest-framework-simplejwt.readthedocs.io/en/latest/customizing_token_claims.html
@@ -33,6 +34,16 @@ export default function Login () {
       throw error
     }
   }
+
+
+  //Brandon added this on Dec 20th in office hours, and line 28
+  const handleLogOut = () => {
+    setUser(null)
+    setAuth(false)
+    localStorage.clear()
+    window.location.reload()
+  }
+
 
   return (
     <div>
@@ -46,14 +57,14 @@ export default function Login () {
         <Dropdown.Item onClick={toggleLoginModal}>
           Sign In
         </Dropdown.Item>
-        <Dropdown.Item>
+        {/* <Dropdown.Item>
           Home
         </Dropdown.Item>
         <Dropdown.Item>
           Settings
-        </Dropdown.Item>
+        </Dropdown.Item> */}
         <Dropdown.Divider />
-        <Dropdown.Item>
+        <Dropdown.Item onClick={handleLogOut}>
           Sign out
         </Dropdown.Item>
       </Dropdown>
