@@ -1,6 +1,5 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { Button, Label, TextInput, ToggleSwitch, Dropdown } from 'flowbite-react'
+import { useState } from 'react'
+import { Label, TextInput, ToggleSwitch, Dropdown } from 'flowbite-react'
 import Client from '../services/api'
 
 export default function EditVenue ({venue}) {
@@ -78,10 +77,10 @@ const [editvenue, setEditvenue] = useState(venueEdit)
 
                 <div className="flex flex-col gap-4">
                     <ToggleSwitch
-                        checked={false}
+                        checked={editvenue.vaccinationrequired}
                         label="Vaccination Required"
                         value={editvenue.vaccinationrequired}
-                        onChange={editHandleChange}
+                        onChange={() => {setEditvenue({...editvenue, 'vaccinationrequired': !editvenue.vaccinationrequired})}}
                         />
                 </div>
 

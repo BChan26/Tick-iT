@@ -1,38 +1,44 @@
-import { useState } from "react"
-import axios from "axios"
+import { useEffect, useState, useContext } from "react"
 import { Button, Label, TextInput, ToggleSwitch } from 'flowbite-react'
 import Client from '../services/api'
+import { DataContext } from "../DataContext"
 
-export default function VenueForm({}) {
+export default function VenueForm() {
 
-const [formData, setFormData] = useState({
-    venuename: '',
-    address: '',
-    city: '',
-    state: '',
-    vaccinationrequired: false, 
-    img: '',
-})
+    const { setHideHeader } = useContext(DataContext)
 
-const handleLoginForm = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value})
-}
+    const [formData, setFormData] = useState({
+        venuename: '',
+        address: '',
+        city: '',
+        state: '',
+        vaccinationrequired: false, 
+        img: '',
+    })
 
-const handleLogin = async (e) => {
-    try {
-        const response = await Client.post(`/venues/`, formData)
-        return response.data
-    } catch (error) {
-        throw error 
+    const handleLoginForm = (e) => {
+        setFormData({...formData, [e.target.name]: e.target.value})
     }
-}
 
-return (
-    <div>
+    const handleLogin = async (e) => {
+        try {
+            const response = await Client.post(`/venues/`, formData)
+            return response.data
+        } catch (error) {
+            throw error 
+        }
+    }
+
+    useEffect(() => {
+        setHideHeader(true)
+    })
+
+    return (
+        <div className="w-3/5 m-auto mt-20">
 
 
-<form className="flex flex-col gap-4" onSubmit={handleLogin}>
-        <div>
+    <form className="flex flex-col gap-4" onSubmit={handleLogin}>
+        <div className="">
             <div className="mb-2 block">
                 <Label htmlFor="venuename" value="Venue Name"/>
             </div>
@@ -63,10 +69,10 @@ return (
 
         <div className="flex flex-col gap-4">
             <ToggleSwitch
-                checked={false}
+                checked={formData.vaccinationrequired}
                 label="Vaccination Required"
                 value={formData.vaccinationrequired}
-                onChange={handleLoginForm}
+                onChange={() => {setFormData({...formData, 'vaccinationrequired': !formData.vaccinationrequired})}}
                 />
         </div>
 
