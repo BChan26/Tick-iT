@@ -14,7 +14,7 @@ export default function Header() {
   useEffect(() => {
     
     const getEvent = async () => {
-      const response = await axios.get(`http://localhost:8000/events/`)
+      const response = await axios.get(`tick-it-production.up.railway.app/events/`)
       const shuffled = response.data.sort(() => 0.5 - Math.random()).slice(0,3)
       setEvents(shuffled)
     }

@@ -22,7 +22,7 @@ export default function Login () {
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post('http://localhost:8000/api/token/', formData) 
+      const res = await axios.post('tick-it-production.up.railway.app/api/token/', formData) 
       console.log(res.data)
       localStorage.setItem('token', res.data.access)
       localStorage.setItem('user', formData.username)
