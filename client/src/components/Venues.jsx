@@ -24,7 +24,7 @@ const Venues = () => {
     setHideHeader(false)
 
     const getVenue = async () => {
-      const response = await axios.get("http://localhost:8000/venues/")
+      const response = await axios.get("tick-it-production.up.railway.app/venues/")
       console.log(response.data)
       setVenues(response.data)
     }
