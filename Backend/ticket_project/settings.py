@@ -1,3 +1,6 @@
+import os
+import dj_database_url
+
 """
 Django settings for ticket_project project.
 
@@ -20,12 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!75)+33fj56fu0nj0)zl4za=rmjoz!0!tm6$babkcwnt^jiufu'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True if os.environ['MODE'] == 'dev' else False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,7 +43,7 @@ INSTALLED_APPS = [
     'ticket_app',
     'rest_framework',
     'corsheaders',
-    'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 REST_FRAMEWORK = {
@@ -57,7 +60,9 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -71,6 +76,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://sub.example.com",
     "http://localhost:8000",
     "http://localhost:3000",
+    "https://the-tick-it.netlify.app"
 ]
 
 ROOT_URLCONF = 'ticket_project.urls'
@@ -109,14 +115,18 @@ WSGI_APPLICATION = 'ticket_project.wsgi.application'
 # }
 
 # Bit.io hosted postgres db
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'gaticketteam/tick-it',
+#         'USER': 'gaticketteam',
+#         'PASSWORD': 'v2_3wyiG_QAJyWCKf9DEj3RXJiWFV9yw',
+#         'HOST': 'db.bit.io',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'gaticketteam/tick-it',
-        'USER': 'gaticketteam',
-        'PASSWORD': 'v2_3wyiG_QAJyWCKf9DEj3RXJiWFV9yw',
-        'HOST': 'db.bit.io',
-    }
+  'default': dj_database_url.config(conn_max_age=600)
 }
 
 
@@ -160,3 +170,21 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATIC_ROOT=os.path.join(BASE_DIR, "static/")
+
+# JavaScript Web Token
+SIMPLE_JWT = {
+    # 'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
+    # 'REFRESH_TOKEN_LIFETIME': timedelta(days=14),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUTH_HEADER_TYPES': ('JWT',),
+    'USER_ID_FIELD': 'username',
+    'USER_ID_CLAIM': 'username',
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+}

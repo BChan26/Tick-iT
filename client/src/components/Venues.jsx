@@ -24,7 +24,7 @@ const Venues = () => {
     setHideHeader(false)
 
     const getVenue = async () => {
-      const response = await axios.get("tick-it-production.up.railway.app/venues/")
+      const response = await axios.get("https://murmuring-sands-94431.herokuapp.com/venues/")
       console.log(response.data)
       setVenues(response.data)
     }

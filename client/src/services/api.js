@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 // export const BASE_URL = process.env.REACT_APP_SERVER_URL
-export const BASE_URL = 'tick-it-production.up.railway.app'
+export const BASE_URL = 'https://murmuring-sands-94431.herokuapp.com/'
 
 const Client = Axios.create({ baseURL: BASE_URL })
 // Intercepts every request axios makes
