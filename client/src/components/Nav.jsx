@@ -57,7 +57,9 @@ export default function Nav() {
               >
                 Home
               </NavLink>
-              <Link to='/'
+
+              
+              {/* <Link to='/'
                 className={
                   'block py-2 pl-3 pr-4 box-border border-b-[3px] hover:text-indigo-500 hover:border-indigo-500 md:p-0'
                   + (navStatus.venueActive ? ' border-indigo-500 text-indigo-500' : ' border-transparent text-gray-800')}
@@ -72,7 +74,9 @@ export default function Nav() {
                 onClick={() => toggleNav('eventsActive')}
               >
                 Events
-              </Link>
+              </Link> */}
+
+
               <Link to='/CreateVenue'
                 className={
                   'block py-2 pl-3 pr-4 box-border border-b-[3px] hover:text-indigo-500 hover:border-indigo-500 md:p-0'
